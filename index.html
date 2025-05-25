@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal do Professor Marcelino Junior</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #1c1c1c, #2c3e50);
+      color: #fff;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #00d8ff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #2c2f33;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background-color: #3d4147;
+    }
+
+    .card h2 {
+      color: #00d8ff;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .card h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portal do Professor Marcelino Junior</h1>
+    <p>Ferramentas e materiais de apoio para disciplinas de TI</p>
+  </header>
+
+  <section class="grid">
+    <div class="card" onclick="abrirLink('processos.html')">
+      <h2>Processos de Negócio</h2>
+      <p>Modelagem, otimização e automação de processos empresariais.</p>
+    </div>
+    <div class="card" onclick="abrirLink('iot.html')">
+      <h2>Internet das Coisas</h2>
+      <p>Dispositivos inteligentes, sensores e comunicação em tempo real.</p>
+    </div>
+    <div class="card" onclick="abrirLink('financeiro.html')">
+      <h2>Controle Financeiro em TI</h2>
+      <p>Gestão de custos, orçamentos e análise de investimentos tecnológicos.</p>
+    </div>
+    <div class="card" onclick="abrirLink('qualidade.html')">
+      <h2>Qualidade de Software</h2>
+      <p>Boas práticas, testes e métricas para desenvolvimento de software.</p>
+    </div>
+    <div class="card" onclick="abrirLink('engenharia.html')">
+      <h2>Engenharia de Software</h2>
+      <p>Processos de desenvolvimento, requisitos, arquitetura e manutenção.</p>
+    </div>
+    <div class="card" onclick="abrirLink('redes.html')">
+      <h2>Redes Definidas por Software</h2>
+      <p>SDN, virtualização e controle de rede programável.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 - Professor Marcelino Junior • Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    function abrirLink(pagina) {
+      window.location.href = pagina;
+    }
+  </script>
+</body>
+</html>
