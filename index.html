@@ -1,130 +1,220 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portal do Professor Marcelino Junior</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Prof. Marcelino Dias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #0f0f1a;
+      --primary-color: #00ffe7;
+      --card-bg: #1f1f2e;
+      --text-color: #ffffff;
+      --accent-color: #ff0080;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #ffffff;
+      --primary-color: #003366;
+      --card-bg: #f0f0f0;
+      --text-color: #000000;
+      --accent-color: #005599;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
     }
 
     body {
-      background: linear-gradient(to right, #1c1c1c, #2c3e50);
-      color: #fff;
-      padding: 2rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
+      background: linear-gradient(90deg, #00ffe7, #ff0080);
+      padding: 1.5em;
       text-align: center;
-      margin-bottom: 3rem;
+      position: relative;
     }
 
     header h1 {
-      font-size: 2.8rem;
-      color: #00d8ff;
+      font-size: 2.5em;
     }
 
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
+    .theme-icon {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: transform 0.3s;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .theme-icon:hover {
+      transform: scale(1.1);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      background-color: #151522;
+      padding: 1em;
+    }
+
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2em 1em;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1em;
     }
 
     .card {
-      background-color: #2c2f33;
+      background-color: var(--card-bg);
+      padding: 1.5em;
+      margin-bottom: 1.5em;
+      border-left: 4px solid var(--primary-color);
       border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      cursor: pointer;
+      transition: transform 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      background-color: #3d4147;
-    }
-
-    .card h2 {
-      color: #00d8ff;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      color: #aaa;
-      font-size: 0.95rem;
+      transform: scale(1.03);
     }
 
     footer {
+      background-color: #151522;
+      color: var(--text-color);
       text-align: center;
-      margin-top: 4rem;
-      color: #666;
-      font-size: 0.9rem;
+      padding: 1em;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: var(--accent-color);
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 1.6em;
       }
 
-      .card h2 {
-        font-size: 1.2rem;
+      nav {
+        flex-direction: column;
+        gap: 1em;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Portal do Professor Marcelino Junior</h1>
-    <p>Ferramentas e materiais de apoio para disciplinas de TI</p>
+    <h1>Portal Prof. Marcelino D. Junior</h1>
+    <p>Inovação em Tecnologia da Informação e Ferramentas Educacionais</p>
+    <img id="themeIcon" src="https://cdn-icons-png.flaticon.com/512/581/581601.png" alt="Alternar Tema" class="theme-icon" onclick="toggleTheme()">
   </header>
 
-  <section class="grid">
-    <div class="card" onclick="abrirLink('processos.html')">
-      <h2>Processos de Negócio</h2>
-      <p>Modelagem, otimização e automação de processos empresariais.</p>
+  <nav>
+    <a href="#disciplinas">Disciplinas</a>
+    <a href="#ferramentas">Ferramentas</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <section id="disciplinas">
+    <h2>Disciplinas</h2>
+    <div class="card">
+      <h3>Redes sem Fio</h3>
+      <p>Wi-Fi, IEEE 802.11, planejamento, espectro e segurança de redes wireless.</p>
     </div>
-    <div class="card" onclick="abrirLink('iot.html')">
-      <h2>Internet das Coisas</h2>
-      <p>Dispositivos inteligentes, sensores e comunicação em tempo real.</p>
+    <div class="card">
+      <h3>Redes Definidas por Software (SDN)</h3>
+      <p>OpenFlow, arquiteturas de controle, POX, Ryu e aplicações inteligentes de rede.</p>
     </div>
-    <div class="card" onclick="abrirLink('financeiro.html')">
-      <h2>Controle Financeiro em TI</h2>
-      <p>Gestão de custos, orçamentos e análise de investimentos tecnológicos.</p>
+    <div class="card">
+      <h3>Gestão de TI</h3>
+      <p>Estratégias, frameworks de governança, KPI de tecnologia e ROI de projetos.</p>
     </div>
-    <div class="card" onclick="abrirLink('qualidade.html')">
-      <h2>Qualidade de Software</h2>
-      <p>Boas práticas, testes e métricas para desenvolvimento de software.</p>
+    <div class="card">
+      <h3>Processos de Negócio</h3>
+      <p>BPMN, modelagem AS-IS/TO-BE, ferramentas visuais como Ishikawa e 5W2H.</p>
     </div>
-    <div class="card" onclick="abrirLink('engenharia.html')">
-      <h2>Engenharia de Software</h2>
-      <p>Processos de desenvolvimento, requisitos, arquitetura e manutenção.</p>
+    <div class="card">
+      <h3>Empreendedorismo</h3>
+      <p>Business Model Canvas, MVP, pitch de ideias e mindset de inovação.</p>
     </div>
-    <div class="card" onclick="abrirLink('redes.html')">
-      <h2>Redes Definidas por Software</h2>
-      <p>SDN, virtualização e controle de rede programável.</p>
+    <div class="card">
+      <h3>Controle Financeiro em TI</h3>
+      <p>TCO, análise de viabilidade, custos operacionais e orçamento estratégico em TI.</p>
     </div>
   </section>
 
+  <section id="ferramentas">
+    <h2>Ferramentas e Utilitários</h2>
+    <div class="card">
+      <h3>Calculadora EIRP</h3>
+      <p><a href="eirp.html">Acessar ferramenta</a></p>
+    </div>
+    <div class="card">
+      <h3>Diagrama de Ishikawa Interativo</h3>
+      <p><a href="ishikawa.html">Acessar ferramenta</a></p>
+    </div>
+    <div class="card">
+      <h3>5W2H Generator</h3>
+      <p><a href="5w2h.html">Acessar ferramenta</a></p>
+    </div>
+    <div class="card">
+      <h3>Canvas de Modelo de Negócio</h3>
+      <p><a href="canvas.html">Acessar ferramenta</a></p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Professor Marcelino Dias da Silva Junior</p>
+    <p>Email: <a href="mailto:marcelino.prof@uninove.br">marcelino.prof@uninove.br</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/marcelinojunior" target="_blank">linkedin.com/in/marcelinojunior</a></p>
+  </section>
+
   <footer>
-    <p>© 2025 - Professor Marcelino Junior • Todos os direitos reservados</p>
+    <p>&copy; 2025 - Portal do Professor Marcelino Dias | Desenvolvido com foco em Inovação Educacional</p>
   </footer>
 
   <script>
-    function abrirLink(pagina) {
-      window.location.href = pagina;
+    const sunIcon = "https://cdn-icons-png.flaticon.com/512/869/869869.png";
+    const moonIcon = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", newTheme);
+      document.getElementById("themeIcon").src = newTheme === "dark" ? moonIcon : sunIcon;
     }
+
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.getElementById("themeIcon").src = moonIcon;
   </script>
 </body>
 </html>
