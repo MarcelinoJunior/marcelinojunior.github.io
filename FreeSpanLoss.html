@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📶 Perda de Espaço Livre (FSPL)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 2em;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+<header style="background-color: #003366; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center;">
+  <div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="Logo" style="height: 72px; margin-right: 1em;">
+    <span style="color: white; font-size: 1.5em; font-weight: bold;">Portal do Professor Marcelino</span>
+  </div>
+  <a href="index.html" style="background-color: #00ffe7; color: #003366; text-decoration: none; padding: 0.5em 1em; border-radius: 8px; font-weight: bold;">← Portal</a>
+</header>
+
+  
+<section style='max-width: 900px; margin: 2em auto; padding: 1.5em; background: #f9f9f9; border-left: 4px solid #00ffe7; border-radius: 8px; font-family: sans-serif;'>
+  <h2 style="color:#003366">📚 Fundamentos da Perda de Espaço Livre (FSPL)</h2>
+  <p>O modelo de <strong>Perda de Espaço Livre</strong> (Free Space Path Loss) representa a atenuação ideal de um sinal em linha reta entre antenas, sem obstáculos.</p>
+  <p>Fórmula usada:</p>
+  <p><strong>FSPL (dB) = 20 log₁₀(d) + 20 log₁₀(f) + 32.44</strong></p>
+  <ul>
+    <li><strong>d</strong> = distância em km</li>
+    <li><strong>f</strong> = frequência em MHz</li>
+  </ul>
+  <p>É essencial para prever desempenho em enlaces ponto-a-ponto.</p>
+  <p>Referências: <a href="https://www.itu.int">ITU</a>, <a href="https://www.fcc.gov">FCC</a>, <a href="https://www.ieee.org">IEEE</a></p>
+</section>
+
+  <div class="container">
+    <h2 style="text-align:center;">📶 Perda de Espaço Livre (FSPL)</h2>
+    <div class="container">
+        <h1>Calculadora de Perda de Espaço Livre (FSPL)</h1>
+        <p class="subtitle">Calculadora para fins acadêmicos desenvolvida por Marcelino D. da S. Junior</p>
+        
+        <p class="formula">Fórmula utilizada:<br> FSPL (dB) = 20 log<sub>10</sub>(d) + 20 log<sub>10</sub>(f) + 20 log<sub>10</sub>(4π / c)</p>
+        
+        <p class="formula">Onde:<br>
+        d = distância em metros<br>
+        f = frequência em Hertz<br>
+        c = velocidade da luz (3 × 10⁸ m/s)</p>
+        
+        <label for="frequency">Frequência (F):</label>
+        <input type="number" id="frequency" placeholder="Informe a frequência">
+
+        <div class="radio-group">
+            <input type="radio" id="mhz" name="frequencyUnit" value="mhz" checked>
+            <label for="mhz">Megahertz (MHz)</label><br>
+            <input type="radio" id="ghz" name="frequencyUnit" value="ghz">
+            <label for="ghz">Gigahertz (GHz)</label>
+        </div>
+
+        <label for="distance">Distância (D, em quilômetros):</label>
+        <input type="number" id="distance" placeholder="Informe a distância">
+
+        <button onclick="calculateFSPL()">Calcular Perda de Espaço Livre</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateFSPL() {
+            const frequencyInput = parseFloat(document.getElementById('frequency').value);
+            const distanceInput = parseFloat(document.getElementById('distance').value);
+
+            if (isNaN(frequencyInput) || isNaN(distanceInput) || frequencyInput <= 0 || distanceInput <= 0) {
+                document.getElementById('result').innerText = 'Por favor, insira valores válidos para frequência e distância.';
+                return;
+            }
+
+            const frequencyUnit = document.querySelector('input[name="frequencyUnit"]:checked').value;
+            let frequencyHz;
+
+            // Converter MHz ou GHz para Hz
+            if (frequencyUnit === 'ghz') {
+                frequencyHz = frequencyInput * 1e9;
+            } else {
+                frequencyHz = frequencyInput * 1e6;
+            }
+
+            // Converter distância de km para metros
+            const distanceMeters = distanceInput * 1000;
+            const c = 3e8; // Velocidade da luz em m/s
+
+            // Fórmula da perda de espaço livre
+            const fspl = 20 * Math.log10(distanceMeters) + 20 * Math.log10(frequencyHz) + 20 * Math.log10(4 * Math.PI / c);
+
+            document.getElementById('result').innerText = `Perda de Espaço Livre: ${fspl.toFixed(2)} dB`;
+        }
+    </script>
+  </div>
+
+<footer style="margin-top: 3em; background-color: #003366; color: white; text-align: center; padding: 1.5em; font-size: 0.95em;">
+  <p>Professor Marcelino Dias da Silva Junior</p>
+  <p>Email: <a href="mailto:marcelino.dias@uni9.pro.br" style="color: #00ffe7;">marcelino.dias@uni9.pro.br</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/marcelinojunior" target="_blank" style="color: #00ffe7;">linkedin.com/in/marcelinojunior</a></p>
+</footer>
+</body>
+</html>

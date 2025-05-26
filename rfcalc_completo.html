@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Comprimento de Onda e Frequência</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 2em;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+<header style="background-color: #003366; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center;">
+  <div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="Logo" style="height: 72px; margin-right: 1em;">
+    <span style="color: white; font-size: 1.5em; font-weight: bold;">Portal do Professor Marcelino</span>
+  </div>
+  <a href="index.html" style="background-color: #00ffe7; color: #003366; text-decoration: none; padding: 0.5em 1em; border-radius: 8px; font-weight: bold;">← Portal</a>
+</header>
+
+  
+<section style='max-width: 900px; margin: 2em auto; padding: 1.5em; background: #f9f9f9; border-left: 4px solid #00ffe7; border-radius: 8px; font-family: sans-serif;'>
+  <h2 style="color:#003366">📚 Fundamentos sobre Frequência e Comprimento de Onda</h2>
+  <p>O <strong>comprimento de onda</strong> e a <strong>frequência</strong> são grandezas inversamente proporcionais, fundamentais para caracterizar sinais eletromagnéticos.</p>
+  <p>Fórmula principal:</p>
+  <p><strong>λ = c / f</strong></p>
+  <ul>
+    <li><strong>λ</strong> = comprimento de onda (em metros)</li>
+    <li><strong>c</strong> = velocidade da luz (aprox. 3×10⁸ m/s)</li>
+    <li><strong>f</strong> = frequência (em Hz)</li>
+  </ul>
+  <p>Referências: <a href="https://www.itu.int">ITU</a>, <a href="https://www.nist.gov">NIST</a>, <a href="https://www.ieee.org">IEEE</a></p>
+</section>
+
+  <div class="container">
+    <h2 style="text-align:center;">📊 Comprimento de Onda e Frequência</h2>
+    <div class="calculator">
+        <!-- Cabeçalho com créditos -->
+        <h1>Calculadora construída para fins educativos.</h1>
+
+        <h2>Inserir abaixo Comprimento de Onda para descobrir a Frequência correspondente ou a Frequência para descobrir o comprimento de onda.</h2>
+
+        <h2>Prof. Marcelino Junior</h2>
+
+        <!-- Campo para inserir a frequência -->
+        <label for="frequency">Frequência:</label>
+        <input type="number" id="frequency" placeholder="Insira a frequência">
+
+        <!-- Botões de rádio para selecionar a unidade da frequência -->
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="frequencyUnit" value="Hz" checked> Hz
+            </label>
+            <label>
+                <input type="radio" name="frequencyUnit" value="kHz"> kHz
+            </label>
+            <label>
+                <input type="radio" name="frequencyUnit" value="MHz"> MHz
+            </label>
+            <label>
+                <input type="radio" name="frequencyUnit" value="GHz"> GHz
+            </label>
+        </div>
+
+        <!-- Campo para inserir o comprimento de onda -->
+        <label for="wavelength">Comprimento de Onda:</label>
+        <input type="number" id="wavelength" placeholder="Insira o comprimento de onda">
+
+        <!-- Botões de rádio para selecionar a unidade do comprimento de onda -->
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="wavelengthUnit" value="m" checked> Metros (m)
+            </label>
+            <label>
+                <input type="radio" name="wavelengthUnit" value="cm"> Centímetros (cm)
+            </label>
+        </div>
+
+        <!-- Botão para calcular -->
+        <button onclick="calculate()">Calcular</button>
+
+        <!-- Área para exibir o resultado -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        // Função para calcular o comprimento de onda ou a frequência
+        function calculate() {
+            // Obtém os valores dos campos de entrada
+            const frequency = parseFloat(document.getElementById('frequency').value);
+            const wavelength = parseFloat(document.getElementById('wavelength').value);
+
+            // Obtém a unidade selecionada para a frequência
+            const frequencyUnit = document.querySelector('input[name="frequencyUnit"]:checked').value;
+
+            // Obtém a unidade selecionada para o comprimento de onda
+            const wavelengthUnit = document.querySelector('input[name="wavelengthUnit"]:checked').value;
+
+            // Verifica se a frequência foi inserida e calcula o comprimento de onda
+            if (frequency && !wavelength) {
+                // Converte a frequência para Hz
+                let frequencyInHz = frequency;
+                switch (frequencyUnit) {
+                    case 'kHz':
+                        frequencyInHz = frequency * 1e3;
+                        break;
+                    case 'MHz':
+                        frequencyInHz = frequency * 1e6;
+                        break;
+                    case 'GHz':
+                        frequencyInHz = frequency * 1e9;
+                        break;
+                }
+
+                const speedOfLight = 3e8; // Velocidade da luz no vácuo em m/s
+                const calculatedWavelength = speedOfLight / frequencyInHz;
+
+                // Converte o comprimento de onda para a unidade selecionada
+                let wavelengthText;
+                if (wavelengthUnit === 'cm') {
+                    wavelengthText = `${(calculatedWavelength * 100).toFixed(2)} cm`;
+                } else {
+                    wavelengthText = `${calculatedWavelength.toFixed(2)} m`;
+                }
+
+                document.getElementById('result').innerText = `Comprimento de Onda: ${wavelengthText}`;
+            }
+            // Verifica se o comprimento de onda foi inserido e calcula a frequência
+            else if (wavelength && !frequency) {
+                // Converte o comprimento de onda para metros
+                let wavelengthInMeters = wavelength;
+                if (wavelengthUnit === 'cm') {
+                    wavelengthInMeters = wavelength / 100;
+                }
+
+                const speedOfLight = 3e8; // Velocidade da luz no vácuo em m/s
+                const calculatedFrequency = speedOfLight / wavelengthInMeters;
+
+                // Converte a frequência para a unidade selecionada
+                let frequencyText;
+                switch (frequencyUnit) {
+                    case 'kHz':
+                        frequencyText = `${(calculatedFrequency / 1e3).toFixed(2)} kHz`;
+                        break;
+                    case 'MHz':
+                        frequencyText = `${(calculatedFrequency / 1e6).toFixed(2)} MHz`;
+                        break;
+                    case 'GHz':
+                        frequencyText = `${(calculatedFrequency / 1e9).toFixed(2)} GHz`;
+                        break;
+                    default:
+                        frequencyText = `${calculatedFrequency.toFixed(2)} Hz`;
+                }
+
+                document.getElementById('result').innerText = `Frequência: ${frequencyText}`;
+            }
+            // Caso ambos os campos estejam preenchidos ou vazios
+            else {
+                document.getElementById('result').innerText = 'Por favor, insira apenas um valor (frequência ou comprimento de onda).';
+            }
+        }
+    </script>
+  </div>
+
+<footer style="margin-top: 3em; background-color: #003366; color: white; text-align: center; padding: 1.5em; font-size: 0.95em;">
+  <p>Professor Marcelino Dias da Silva Junior</p>
+  <p>Email: <a href="mailto:marcelino.dias@uni9.pro.br" style="color: #00ffe7;">marcelino.dias@uni9.pro.br</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/marcelinojunior" target="_blank" style="color: #00ffe7;">linkedin.com/in/marcelinojunior</a></p>
+</footer>
+</body>
+</html>

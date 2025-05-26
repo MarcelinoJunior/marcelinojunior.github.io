@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌐 Raio da Primeira Zona de Fresnel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 2em;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+<header style="background-color: #003366; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center;">
+  <div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="Logo" style="height: 72px; margin-right: 1em;">
+    <span style="color: white; font-size: 1.5em; font-weight: bold;">Portal do Professor Marcelino</span>
+  </div>
+  <a href="index.html" style="background-color: #00ffe7; color: #003366; text-decoration: none; padding: 0.5em 1em; border-radius: 8px; font-weight: bold;">← Portal</a>
+</header>
+
+  
+<section style='max-width: 900px; margin: 2em auto; padding: 1.5em; background: #f9f9f9; border-left: 4px solid #00ffe7; border-radius: 8px; font-family: sans-serif;'>
+  <h2 style="color:#003366">📚 Fundamentos do Cálculo de Fresnel</h2>
+  <p>A <strong>Zona de Fresnel</strong> é uma região elipsoidal ao redor da linha direta entre transmissor e receptor que deve estar livre de obstáculos para evitar perda de sinal por interferência e difração.</p>
+  <p>O cálculo da primeira zona de Fresnel ajuda a definir a altura mínima necessária entre o feixe e o solo ou obstáculos.</p>
+  <p>A fórmula aproximada para o raio da 1ª zona de Fresnel (em metros) é:</p>
+  <p><strong>r = 17.32 × √(d₁ × d₂ / (f × d))</strong></p>
+  <p>Onde:</p>
+  <ul>
+    <li><strong>d₁</strong> e <strong>d₂</strong> = distâncias do transmissor e receptor ao ponto de análise (em km)</li>
+    <li><strong>f</strong> = frequência (em GHz)</li>
+    <li><strong>d</strong> = d₁ + d₂</li>
+  </ul>
+  <p>Referências: <a href="https://www.itu.int">ITU</a>, <a href="https://www.anatel.gov.br">Anatel</a>, <a href="https://www.radio-labs.com">Radio-Labs</a></p>
+</section>
+
+  <div class="container">
+    <h2 style="text-align:center;">🌐 Raio da Primeira Zona de Fresnel</h2>
+    <div class="container">
+        <h1>Calculadora para encontrar o Raio R0 da Primeira Zona de Fresnel</h1>
+        <p class="subtitle">Calculadora para fins acadêmicos desenvolvida por Marcelino D. da S. Junior</p>
+
+        <label for="frequency">Frequência (F):</label>
+        <input type="number" id="frequency" placeholder="Informe a frequência">
+
+        <div class="radio-group">
+            <input type="radio" id="mhz" name="frequencyUnit" value="mhz" checked>
+            <label for="mhz">Megahertz (MHz)</label><br>
+            <input type="radio" id="ghz" name="frequencyUnit" value="ghz">
+            <label for="ghz">Gigahertz (GHz)</label>
+        </div>
+
+        <label for="distance">Distância total do link (D, em quilômetros):</label>
+        <input type="number" id="distance" placeholder="Informe a distância total do link">
+
+        <label for="d1">Distância da antena de transmissão ao ponto (D1, em quilômetros):</label>
+        <input type="number" id="d1" placeholder="Informe D1">
+
+        <label for="d2">Distância do ponto à segunda antena (D2, em quilômetros):</label>
+        <input type="number" id="d2" placeholder="Informe D2">
+
+        <button onclick="calculateFresnelRadius()">Calcular Raio da Primeira Zona de Fresnel</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateFresnelRadius() {
+            const frequencyInput = parseFloat(document.getElementById('frequency').value);
+            const distance = parseFloat(document.getElementById('distance').value);
+            const d1 = parseFloat(document.getElementById('d1').value);
+            const d2 = parseFloat(document.getElementById('d2').value);
+
+            if (isNaN(frequencyInput) || isNaN(distance) || isNaN(d1) || isNaN(d2) || frequencyInput <= 0 || distance <= 0 || d1 <= 0 || d2 <= 0 || Math.abs(d1 + d2 - distance) > 0.01) {
+                document.getElementById('result').innerText = 'Por favor, verifique se todos os valores foram preenchidos corretamente e se D1 + D2 = D.';
+                return;
+            }
+
+            const frequencyUnit = document.querySelector('input[name="frequencyUnit"]:checked').value;
+            let fresnelRadius;
+
+            if (frequencyUnit === 'ghz') {
+                fresnelRadius = 17.29 * Math.sqrt((d1 * d2) / (distance * frequencyInput));
+            } else if (frequencyUnit === 'mhz') {
+                fresnelRadius = 550 * Math.sqrt((d1 * d2) / (distance * frequencyInput));
+            } else {
+                document.getElementById('result').innerText = 'Erro inesperado: unidade de frequência inválida.';
+                return;
+            }
+
+            document.getElementById('result').innerText = `Raio da Primeira Zona de Fresnel: ${fresnelRadius.toFixed(2)} metros.`;
+        }
+    </script>
+  </div>
+
+<footer style="margin-top: 3em; background-color: #003366; color: white; text-align: center; padding: 1.5em; font-size: 0.95em;">
+  <p>Professor Marcelino Dias da Silva Junior</p>
+  <p>Email: <a href="mailto:marcelino.dias@uni9.pro.br" style="color: #00ffe7;">marcelino.dias@uni9.pro.br</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/marcelinojunior" target="_blank" style="color: #00ffe7;">linkedin.com/in/marcelinojunior</a></p>
+</footer>
+</body>
+</html>

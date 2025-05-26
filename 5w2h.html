@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5W2H - Planejamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --primary-color: #003366;
+      --card-bg: #f0f0f0;
+      --text-color: #000000;
+      --accent-color: #00ffe7;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 56px;
+      margin-right: 1em;
+    }
+
+    header span {
+      color: white;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+
+    header a {
+      background-color: var(--accent-color);
+      color: #003366;
+      text-decoration: none;
+      padding: 0.5em 1.2em;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 2em;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+    }
+
+    section.fundamento {
+      max-width: 800px;
+      margin: 2em auto;
+      background: #f9f9f9;
+      border-left: 5px solid var(--accent-color);
+      padding: 1.5em;
+      border-radius: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6em;
+      margin-top: 0.4em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .alert {
+      margin-top: 1.5em;
+      padding: 1em;
+      background-color: #e0f7fa;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  
+<header style="background-color: #003366; padding: 1em 2em; display: flex; justify-content: space-between; align-items: center;">
+  <div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="Logo" style="height: 72px; margin-right: 1em;">
+    <span style="color: white; font-size: 1.5em; font-weight: bold;">Portal do Professor Marcelino</span>
+  </div>
+  <a href="index.html" style="background-color: #00ffe7; color: #003366; text-decoration: none; padding: 0.5em 1em; border-radius: 8px; font-weight: bold;">← Portal</a>
+</header>
+
+
+  
+<section class="fundamento">
+  <h2>📘 Fundamentos do Método 5W2H</h2>
+  <p>O método <strong>5W2H</strong> é uma ferramenta administrativa usada para organizar e detalhar planos de ação, baseada em sete perguntas fundamentais que ajudam a estruturar uma execução eficiente. É muito utilizada na gestão da qualidade, planejamento estratégico e resolução de problemas.</p>
+
+  <ul>
+    <li><strong>What</strong> – O que será feito?</li>
+    <li><strong>Why</strong> – Por que será feito?</li>
+    <li><strong>Where</strong> – Onde será feito?</li>
+    <li><strong>When</strong> – Quando será feito?</li>
+    <li><strong>Who</strong> – Quem será responsável?</li>
+    <li><strong>How</strong> – Como será feito?</li>
+    <li><strong>How much</strong> – Quanto custará?</li>
+  </ul>
+
+  <p>O 5W2H está alinhado a práticas como <strong>PDCA</strong>, <strong>Kaizen</strong> e <strong>Lean Manufacturing</strong>. Referências notáveis incluem:</p>
+  <ul>
+    <li><strong>Vicente Falconi</strong> – Qualidade e gestão estratégica</li>
+    <li><strong>Philip Kotler</strong> – Marketing e processos organizacionais</li>
+    <li><a href="https://www.abnt.org.br" target="_blank">ABNT</a> – Normas brasileiras de planejamento e qualidade</li>
+    <li><a href="https://www.iso.org" target="_blank">ISO</a> – Normas internacionais de gestão (ex: ISO 9001)</li>
+    <li><a href="https://www.pmi.org" target="_blank">PMI</a> – Project Management Institute (PMBOK Guide)</li>
+  </ul>
+
+  <h3>📄 Exemplo prático</h3>
+  <p><strong>Cenário:</strong> Imagine que você identificou baixa adesão dos alunos às atividades online.</p>
+  <ul>
+    <li><strong>O que:</strong> Criar campanha de incentivo com certificados e bonificação.</li>
+    <li><strong>Por quê:</strong> Aumentar o engajamento e a participação nas plataformas virtuais.</li>
+    <li><strong>Onde:</strong> Plataforma Moodle da universidade.</li>
+    <li><strong>Quando:</strong> Início imediato, com avaliação em 30 dias.</li>
+    <li><strong>Quem:</strong> Coordenador de curso e equipe de comunicação.</li>
+    <li><strong>Como:</strong> Criando conteúdo visual, enviando e-mail marketing e divulgando em sala.</li>
+    <li><strong>Quanto:</strong> R$ 500,00 para certificados, brindes e materiais.</li>
+  </ul>
+</section>
+
+
+  <div class="container">
+    <h2 style="text-align:center;">📋 5W2H - Planejamento</h2>
+    <form id="form5w2h">
+      <label>O que?</label>
+      <input type="text" id="o_que" placeholder="O que será feito?" required>
+
+      <label>Quem?</label>
+      <input type="text" id="quem" placeholder="Quem será responsável?" required>
+
+      <label>Quando?</label>
+      <input type="date" id="quando" required>
+
+      <label>Onde?</label>
+      <input type="text" id="onde" placeholder="Onde será realizado?" required>
+
+      <label>Por quê?</label>
+      <input type="text" id="porque" placeholder="Qual a razão?" required>
+
+      <label>Como?</label>
+      <input type="text" id="como" placeholder="Como será feito?" required>
+
+      <label>Quanto?</label>
+      <input type="number" id="quanto" placeholder="Quanto vai custar?" required>
+
+      <button type="button" onclick="mostrarPlano()">Mostrar Plano</button>
+    </form>
+
+    <div id="planoResultado" class="alert" style="display:none;"></div>
+  </div>
+
+  <script>
+    function mostrarPlano() {
+      const o_que = document.getElementById('o_que').value;
+      const quem = document.getElementById('quem').value;
+      const quando = document.getElementById('quando').value;
+      const onde = document.getElementById('onde').value;
+      const porque = document.getElementById('porque').value;
+      const como = document.getElementById('como').value;
+      const quanto = document.getElementById('quanto').value;
+
+      const plano = `
+        <strong>O que:</strong> ${o_que}<br>
+        <strong>Quem:</strong> ${quem}<br>
+        <strong>Quando:</strong> ${quando}<br>
+        <strong>Onde:</strong> ${onde}<br>
+        <strong>Por quê:</strong> ${porque}<br>
+        <strong>Como:</strong> ${como}<br>
+        <strong>Quanto:</strong> R$ ${quanto}
+      `;
+
+      const resultado = document.getElementById('planoResultado');
+      resultado.innerHTML = plano;
+      resultado.style.display = 'block';
+      resultado.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+<footer style="margin-top: 3em; background-color: #003366; color: white; text-align: center; padding: 1.5em; font-size: 0.95em;">
+  <p>Professor Marcelino Dias da Silva Junior</p>
+  <p>Email: <a href="mailto:marcelino.dias@uni9.pro.br" style="color: #00ffe7;">marcelino.dias@uni9.pro.br</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/marcelinojunior" target="_blank" style="color: #00ffe7;">linkedin.com/in/marcelinojunior</a></p>
+</footer>
+</body>
+</html>
+
